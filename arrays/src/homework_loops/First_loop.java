@@ -16,6 +16,7 @@ public class First_loop {
                 System.out.println(text);
             }
         }
+        scanner.close();
 
     }
 }
