@@ -7,7 +7,7 @@ public class FizzBuzz {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        int number = 0;
+        int number;
         do {
             System.out.print("Please enter a number: ");
             number = Integer.parseInt(scanner.nextLine());
