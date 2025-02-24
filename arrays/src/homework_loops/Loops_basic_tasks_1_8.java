@@ -111,16 +111,3 @@ public class Loops_basic_tasks_1_8 {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
