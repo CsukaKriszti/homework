@@ -50,7 +50,7 @@ public class Loops_basic_tasks_2 {
         System.out.println("\n");
 
         System.out.println("7. Writes every number that is a multiple of 7 between 1 and 200 to the console.");
-        for (int i = 0; i <= 200; i += 7) {
+        for (int i = 7 ; i <= 200; i += 7) {
             System.out.print(i + " ");
         }
         System.out.println("\n");
@@ -125,7 +125,7 @@ public class Loops_basic_tasks_2 {
 
         System.out.println("17. Finds and writes the largest prime number below 500.");
         int max = 0;
-        for (int i = 2; i <= 100; i++) {
+        for (int i = 2; i <= 500; i++) {
             boolean isPrime = true;
             for (int j = 2; j <= Math.sqrt(i); j++) {
                 if (i % j == 0) {
