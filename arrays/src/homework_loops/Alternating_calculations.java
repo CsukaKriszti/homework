@@ -49,7 +49,7 @@ public class Alternating_calculations {
         //System.out.println(Math.pow(5, 2) / Math.pow(1, 3) * Math.pow(4, 2) / Math.pow(4, 1) * Math.pow(2, 1));
         double strangeSum = 1;
         for (int i = 0; i < numbers.length - 1; i += 2) {
-            double partResult = Math.pow(numbers[i], numbers[i + 1]); 
+            double partResult = Math.pow(numbers[i], numbers[i + 1]);
             if (i % 4 == 0) {
                 strangeSum *= partResult;
             } else {
@@ -148,8 +148,8 @@ public class Alternating_calculations {
         System.out.println();
 
         System.out.println("9. Count how many numbers are even and how many are odd in an array.");
-        byte evenNumberCount = 0;
-        byte oddNumberCount = 0;
+        int evenNumberCount = 0;
+        int oddNumberCount = 0;
         for (int number : numbers) {
             if (number % 2 == 0) {
                 evenNumberCount++;
