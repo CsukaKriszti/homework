@@ -1,5 +1,7 @@
 package homework_loops;
 
+import java.util.Arrays;
+
 public class Alternating_calculations {
     public static void main(String[] args) {
 
@@ -34,17 +36,20 @@ public class Alternating_calculations {
         System.out.println("4. Compute the sum while skipping every fourth element (index 3, 7, 11, etc.).");
         int sumOfTheAddition = 0;
         for (int i = 0; i < numbers.length; i++) {
-            sumOfTheAddition = (!((i + 1) % 4 == 0) ? sumOfTheAddition + numbers[i] : sumOfTheAddition);
+            if ((i + 1) % 4 != 0) {
+                sumOfTheAddition += numbers[i];
+            }
+            //sumOfTheAddition = (!((i + 1) % 4 == 0) ? sumOfTheAddition + numbers[i] : sumOfTheAddition);
         }
         System.out.println(sumOfTheAddition);
         System.out.println();
 
         System.out.println("5. n1^n2÷n3^n4×n5^n6÷n7^n8×n9^n10");
         //int[] numbers = {5, 2, 1, 3, 4, 2, 4, 1, 2, 1};
-        System.out.println(Math.pow(5, 2) / Math.pow(1, 3) * Math.pow(4, 2) / Math.pow(4, 1) * Math.pow(2, 1));
-        double strangeSum = 1; //25, 25, 400, 100, 200
-        for (int i = 0; i < numbers.length - 1; i += 2) { // i:  0, 2, 4, 6, 8
-            double partResult = Math.pow(numbers[i], numbers[i + 1]); // 25, 1, 16, 4, 2
+        //System.out.println(Math.pow(5, 2) / Math.pow(1, 3) * Math.pow(4, 2) / Math.pow(4, 1) * Math.pow(2, 1));
+        double strangeSum = 1;
+        for (int i = 0; i < numbers.length - 1; i += 2) {
+            double partResult = Math.pow(numbers[i], numbers[i + 1]); 
             if (i % 4 == 0) {
                 strangeSum *= partResult;
             } else {
@@ -135,22 +140,24 @@ public class Alternating_calculations {
         for (int number : numbers) {
             if (!isPrimeNumber(number)) {
                 sum2 += number;
+            } else {
+                sum2 += (int) Math.pow(number, 2);
             }
         }
         System.out.println(sum2);
         System.out.println();
 
         System.out.println("9. Count how many numbers are even and how many are odd in an array.");
-        byte maxEven = 0;
-        byte maxOdd = 0;
+        byte evenNumberCount = 0;
+        byte oddNumberCount = 0;
         for (int number : numbers) {
             if (number % 2 == 0) {
-                maxEven++;
+                evenNumberCount++;
             } else {
-                maxOdd++;
+                oddNumberCount++;
             }
         }
-        System.out.println("Even count = " + maxEven + "\n" + "Odd count = " + maxOdd);
+        System.out.println("Even count = " + evenNumberCount + "\n" + "Odd count = " + oddNumberCount);
         System.out.println();
 
         System.out.println("10. Compute the sum of an array while ignoring negative numbers.");
@@ -184,17 +191,16 @@ public class Alternating_calculations {
 
 
     public static boolean isPrimeNumber(int number) {
-        boolean isTrue = true;
+
         if (number <= 1) {
-            isTrue = false;
+            return false;
         }
         for (int i = 2; i <= Math.sqrt(number); i++) {
             if (number % i == 0) {
-                isTrue = false;
-                break;
+                return false;
             }
         }
-        return isTrue;
+        return true;
     }
 
 }
