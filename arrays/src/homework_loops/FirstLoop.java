@@ -2,7 +2,7 @@ package homework_loops;
 
 import java.util.Scanner;
 
-public class First_loop {
+public class FirstLoop {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter a number: ");

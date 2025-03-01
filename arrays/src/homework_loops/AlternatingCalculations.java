@@ -1,8 +1,6 @@
 package homework_loops;
 
-import java.util.Arrays;
-
-public class Alternating_calculations {
+public class AlternatingCalculations {
     public static void main(String[] args) {
 
         System.out.println("1. n1+n2−n3+n4+n5−n6+n7+n8−n9");

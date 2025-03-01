@@ -3,7 +3,7 @@ package homework_loops;
 import java.util.Scanner;
 
 
-public class Loops_basic_tasks_1_8 {
+public class LoopsBasicTasks1 {
     public static void main(String[] args) {
 
         System.out.println("1. Writes “Paper Dragon” to the console 5 times.\n");

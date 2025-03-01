@@ -1,6 +1,6 @@
 package homework_loops;
 
-public class Basic_algorithms {
+public class BasicAlgorithms {
     public static void main(String[] args) {
 
         int[] numbers = {11, -12, 16, 93, 23, 101, -65, 204, 8, 78};

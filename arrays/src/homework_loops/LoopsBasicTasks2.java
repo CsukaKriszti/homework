@@ -2,7 +2,7 @@ package homework_loops;
 
 import java.util.Scanner;
 
-public class Loops_basic_tasks_2 {
+public class LoopsBasicTasks2 {
     public static void main(String[] args) {
 
         System.out.println("1. Writes Hello, World! to the console 10 times.");
