@@ -1,4 +1,4 @@
-package homework_loops;
+package homework;
 
 public class BasicAlgorithms {
     public static void main(String[] args) {

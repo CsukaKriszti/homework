@@ -1,4 +1,4 @@
-package homework_loops;
+package homework;
 
 public class AlternatingCalculations {
     public static void main(String[] args) {
