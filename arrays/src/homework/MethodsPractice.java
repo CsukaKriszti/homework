@@ -11,11 +11,11 @@ public class MethodsPractice {
         int number = 240;
         int number2 = 4;
         int number3 = 2;
-        System.out.println(decideNumberGreater50(number) + "\n");
+        System.out.println(isNumberGreater50(number) + "\n");
         System.out.println("2. Takes in two numbers and returns the greater one.");
         System.out.println(decideGreaterNumber(number, number2) + "\n");
         System.out.println("3. Takes in two numbers and returns a String. Possible values:a.The first number is greater, b.The second number is greater,c.The two numbers are equal");
-        System.out.println(compareNumbersAndPrintGreater(number, number2) + "\n");
+        System.out.println(displayGreaterNumberText(number, number2) + "\n");
         System.out.println("4. Writes all the numbers from 1 to 100 to the console.");
         printNumbersFrom1To100();
         System.out.println("\n");
@@ -39,7 +39,7 @@ public class MethodsPractice {
         System.out.println("11. Gets in an array and a number and returns whether the sum of any two numbers at different indexes can add up to that number.");
         int[] numbers = {5, 6, 10, 2, 4};
         int number4 = 15;
-        System.out.println(findPairWithSum(numbers, number4) + "\n");
+        System.out.println(hasPairWithSum(numbers, number4) + "\n");
         System.out.println("12. Gets in a String and a positive number and returns the String repeated n times. If the number is smaller than 1, return an empty String. Don’t use the string’s in-built repeat method!");
         repeatTextNTimes("Repeat", 5);
         System.out.println("\n");
@@ -54,24 +54,39 @@ public class MethodsPractice {
         int[] array = new int[matrix.length];
         System.out.println(Arrays.toString(sumMatrixRowsAndStoreInArray(matrix, array)) + "\n");
         System.out.println("16. Takes in a 2-d array and returns the sum of its main diagonal- you can be sure that it’s an n*n array:");
-        System.out.println(sumMatrixDiagonal(matrix)+"\n");
+        System.out.println(sumMatrixDiagonal(matrix));
+        System.out.println(sumMatrixDiagonal2(matrix));
         System.out.println("17. Takes in a 2-d array and returns its diagonal difference, so in the case of the previous array, it should return (1+0+3+2)-(1+0+2+2)");
         System.out.println(calculateDiagonalSums(matrix));
+        System.out.println(calculateDiagonalSums2(matrix));
+
     }
 
     private static int calculateDiagonalSums(int[][] matrix) {
-            int diagonalSum = sumMatrixDiagonal(matrix);
-            int counter = 0;
-            for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix[i].length; j++) {
-                    if (i + j == matrix.length-1) {
-                        counter += matrix[i][j];
-                    }
+        int diagonalSum = sumMatrixDiagonal(matrix);
+        int counter = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (i + j == matrix.length - 1) {
+                    counter += matrix[i][j];
                 }
             }
-            return diagonalSum + counter;
         }
+        return diagonalSum + counter;
+    }
 
+    private static int calculateDiagonalSums2(int[][] matrix) {
+        int diagonalSum2 = sumMatrixDiagonal(matrix);
+        int counter = 0;
+        int lastNumberIndex = matrix.length - 1;
+        for (int i = 0; i < matrix.length; i++) {
+            if (i >= 0) {
+                counter += matrix[i][lastNumberIndex--];
+            }
+
+        }
+        return counter + diagonalSum2;
+    }
 
     private static int sumMatrixDiagonal(int[][] matrix) {
         int counter = 0;
@@ -84,6 +99,14 @@ public class MethodsPractice {
         }
 
 
+        return counter;
+    }
+
+    private static int sumMatrixDiagonal2(int[][] matrix) {
+        int counter = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            counter += matrix[i][i];
+        }
         return counter;
     }
 
@@ -130,7 +153,7 @@ public class MethodsPractice {
 
     }
 
-    private static boolean findPairWithSum(int[] numbers, int number) {
+    private static boolean hasPairWithSum(int[] numbers, int number) {
         for (int i = 0; i < numbers.length; i++) {
             for (int j = i + 1; j < numbers.length; j++) {
                 if ((numbers[i] + numbers[j]) == number) {
@@ -163,8 +186,8 @@ public class MethodsPractice {
         return number * number2 == number3;
     }
 
-    private static boolean isDivisible(int numberToBeDivided, int divider) {
-        return numberToBeDivided % divider == 0;
+    private static boolean isDivisible(int numberToBeDivided, int divisor) {
+        return numberToBeDivided % divisor == 0;
     }
 
     private static boolean isPrimeNumber(int number) {
@@ -199,16 +222,17 @@ public class MethodsPractice {
         }
     }
 
-    private static String compareNumbersAndPrintGreater(int number, int number2) {
+    private static String displayGreaterNumberText(int number, int number2) {
         return number > number2 ? "The first number is greater." : number2 > number ? "The second number is greater." : "The two numbers are equal.";
     }
 
-    private static String decideGreaterNumber(int number, int number2) {
-        return number > number2 ? String.valueOf(valueOf(number)) : number2 > number ? String.valueOf(valueOf(number2)) : "Equals";
+    private static int decideGreaterNumber(int number, int number2) {
+        return Math.max(number2, number);
     }
 
-    private static boolean decideNumberGreater50(int number) {
+    private static boolean isNumberGreater50(int number) {
         return number > 50;
     }
 
 }
+
