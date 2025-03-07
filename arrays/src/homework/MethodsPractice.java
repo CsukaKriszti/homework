@@ -48,7 +48,7 @@ public class MethodsPractice {
         System.out.println(joinTextArray(texts) + "\n");
         System.out.println("14. Gets in a two-dimensional array and returns the sum of all of the numbers.");
         int[][] matrix = {{1, 3, 2,}, {5, 7, 6}, {8, 9, 7}};
-        printMatrixToConsole(matrix);
+        System.out.println(printMatrixNumberSumToConsole(matrix));
         System.out.println();
         System.out.println("15. Gets in a two-dimensional array and returns a one-dimensional one with the sum of the subarrays. ");
         int[] array = new int[matrix.length];
@@ -56,6 +56,7 @@ public class MethodsPractice {
         System.out.println("16. Takes in a 2-d array and returns the sum of its main diagonal- you can be sure that it’s an n*n array:");
         System.out.println(sumMatrixDiagonal(matrix));
         System.out.println(sumMatrixDiagonal2(matrix));
+        System.out.println();
         System.out.println("17. Takes in a 2-d array and returns its diagonal difference, so in the case of the previous array, it should return (1+0+3+2)-(1+0+2+2)");
         System.out.println(calculateDiagonalSums(matrix));
         System.out.println(calculateDiagonalSums2(matrix));
@@ -72,20 +73,16 @@ public class MethodsPractice {
                 }
             }
         }
-        return diagonalSum + counter;
+        return diagonalSum - counter;
     }
 
     private static int calculateDiagonalSums2(int[][] matrix) {
-        int diagonalSum2 = sumMatrixDiagonal(matrix);
+        int diagonalSum2 = sumMatrixDiagonal2(matrix);
         int counter = 0;
-        int lastNumberIndex = matrix.length - 1;
         for (int i = 0; i < matrix.length; i++) {
-            if (i >= 0) {
-                counter += matrix[i][lastNumberIndex--];
-            }
-
+            counter += matrix[i][matrix.length - 1 - i];
         }
-        return counter + diagonalSum2;
+        return diagonalSum2 - counter;
     }
 
     private static int sumMatrixDiagonal(int[][] matrix) {
@@ -97,8 +94,6 @@ public class MethodsPractice {
                 }
             }
         }
-
-
         return counter;
     }
 
@@ -118,20 +113,18 @@ public class MethodsPractice {
             }
             array[i] = counter;
         }
-
-
         return array;
     }
 
 
-    private static void printMatrixToConsole(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + "\t");
+    private static int printMatrixNumberSumToConsole(int[][] matrix) {
+        int sum = 0;
+        for (int[] i : matrix) {
+            for (int j : i) {
+                sum += j;
             }
-            System.out.println();
         }
-
+        return sum;
     }
 
     private static String joinTextArray(String[] texts) {
@@ -162,7 +155,6 @@ public class MethodsPractice {
             }
 
         }
-
         return false;
     }
 
@@ -200,7 +192,6 @@ public class MethodsPractice {
             }
         }
         return true;
-
     }
 
     private static void findAndPrintDivisibleBy5(int number) {
