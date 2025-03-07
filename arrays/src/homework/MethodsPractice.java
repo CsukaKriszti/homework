@@ -58,64 +58,62 @@ public class MethodsPractice {
         System.out.println(sumMatrixDiagonal2(matrix));
         System.out.println();
         System.out.println("17. Takes in a 2-d array and returns its diagonal difference, so in the case of the previous array, it should return (1+0+3+2)-(1+0+2+2)");
-        System.out.println(calculateDiagonalSums(matrix));
-        System.out.println(calculateDiagonalSums2(matrix));
-
+        System.out.println(calculateDiagonalSumDifference(matrix));
+        System.out.println(calculateDiagonalSumsDifference2(matrix));
     }
 
-    private static int calculateDiagonalSums(int[][] matrix) {
+    private static int calculateDiagonalSumDifference(int[][] matrix) {
         int diagonalSum = sumMatrixDiagonal(matrix);
-        int counter = 0;
+        int secondaryDiagonalSum = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 if (i + j == matrix.length - 1) {
-                    counter += matrix[i][j];
+                    secondaryDiagonalSum += matrix[i][j];
                 }
             }
         }
-        return diagonalSum - counter;
+        return diagonalSum - secondaryDiagonalSum;
     }
 
-    private static int calculateDiagonalSums2(int[][] matrix) {
+    private static int calculateDiagonalSumsDifference2(int[][] matrix) {
         int diagonalSum2 = sumMatrixDiagonal2(matrix);
-        int counter = 0;
+        int secondaryDiagonalSum2 = 0;
         for (int i = 0; i < matrix.length; i++) {
-            counter += matrix[i][matrix.length - 1 - i];
+            secondaryDiagonalSum2 += matrix[i][matrix.length - 1 - i];
         }
-        return diagonalSum2 - counter;
+        return diagonalSum2 - secondaryDiagonalSum2;
     }
 
     private static int sumMatrixDiagonal(int[][] matrix) {
-        int counter = 0;
+        int diagonalSum = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 if (i == j) {
-                    counter += matrix[i][j];
+                    diagonalSum += matrix[i][j];
                 }
             }
         }
-        return counter;
+        return diagonalSum;
     }
 
     private static int sumMatrixDiagonal2(int[][] matrix) {
-        int counter = 0;
+        int diagonalSum = 0;
         for (int i = 0; i < matrix.length; i++) {
-            counter += matrix[i][i];
+            diagonalSum += matrix[i][i];
         }
-        return counter;
+        return diagonalSum;
     }
 
     private static int[] sumMatrixRowsAndStoreInArray(int[][] matrix, int[] array) {
         for (int i = 0; i < matrix.length; i++) {
-            int counter = 0;
+            int rowsum = 0;
             for (int j = 0; j < matrix[i].length; j++) {
-                counter += matrix[i][j];
+                rowsum += matrix[i][j];
             }
-            array[i] = counter;
+            array[i] = rowsum;
         }
         return array;
     }
-
 
     private static int printMatrixNumberSumToConsole(int[][] matrix) {
         int sum = 0;
