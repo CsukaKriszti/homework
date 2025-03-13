@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 public class CalculateTipTest {
     @Test
     void returnFalseWhenNumberLessThan10() {
-        int number = 5;
+        int number = 9;
         boolean result = CalculateTip.isValidNumber(number);
         Assertions.assertFalse(result);
     }
 
     @Test
     void returnFalseWhenNumberGreaterThan80() {
-        int number = 85;
+        int number = 81;
         boolean result = CalculateTip.isValidNumber(number);
         Assertions.assertFalse(result);
     }
@@ -32,14 +32,14 @@ public class CalculateTipTest {
 
     @Test
     void returnTrueWhenTheNumberBetween10And80() {
-        int number = 67;
+        int number = 79;
         boolean result = CalculateTip.isValidNumber(number);
         Assertions.assertTrue(result);
     }
 
     @Test
     void returnMinusOneWhenNumberLessThan10() {
-        int number = 7;
+        int number = 9;
         int result = CalculateTip.getTipWithinRange(number);
         Assertions.assertEquals(-1, result);
     }
@@ -60,36 +60,36 @@ public class CalculateTipTest {
 
     @Test
     void returnTheNumberWhenThisNumberBetween10And80() {
-        int number = 34;
+        int number = 11;
         int result = CalculateTip.getTipWithinRange(number);
         Assertions.assertEquals(number, result);
     }
 
     @Test
     void returnMinusOneWhenNumberGreaterThan80() {
-        int number = 91;
+        int number = 81;
         int result = CalculateTip.getTipWithinRange(number);
         Assertions.assertEquals(-1, result);
     }
 
     @Test
     void returnCorrectTotal() {
-        int[] numbers = {1, 2, 3, 4, 5};
+        int[] numbers = {200, 450, 3240, 7610, 1870};
         int result = CalculateTip.calculateSumPrices(numbers);
-        Assertions.assertEquals(15, result);
+        Assertions.assertEquals(13370, result);
     }
 
     @Test
     void returnCorrectTip() {
-        int[] numbers = {1, 2, 3, 4, 5};
+        int[] numbers = {200, 450, 3240, 7610, 1870};
         int tip = 20;
         int result = CalculateTip.calculateTip(numbers, tip);
-        Assertions.assertEquals(3, result);
+        Assertions.assertEquals(2674, result);
     }
 
     @Test
     void returnMinusOneWhenTheTipPercentLessThen10() {
-        int[] numbers = {1, 2, 3, 4, 5};
+        int[] numbers = {200, 450, 3240, 7610, 1870};
         int tip = 5;
         int result = CalculateTip.calculateTip(numbers, tip);
         Assertions.assertEquals(-1, result);
@@ -97,7 +97,7 @@ public class CalculateTipTest {
 
     @Test
     void returnMinusOneWhenTheTipPercentGreaterThen80() {
-        int[] numbers = {1, 2, 3, 4, 5};
+        int[] numbers = {200, 450, 3240, 7610, 1870};
         int tip = 100;
         int result = CalculateTip.calculateTip(numbers, tip);
         Assertions.assertEquals(-1, result);

@@ -13,7 +13,7 @@ public class CalculateTip {
     }
 
     public static boolean isValidNumber(int tipPercent) {
-        return (tipPercent >= 10 && tipPercent <= 80);
+        return tipPercent >= 10 && tipPercent <= 80;
     }
 
     public static int getTipWithinRange(int tipPercent) {
