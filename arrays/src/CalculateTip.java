@@ -7,25 +7,32 @@ public class CalculateTip {
         int[] prices = {2000, 250, 300, 50, 250};
         System.out.print("Please enter what percentage tip you would like to give.: ");
         int tipPercent = Integer.parseInt(scanner.nextLine());
-        int checkedTipPercent = checkAndReturnInRange(tipPercent);
-        System.out.println(calculateTip(prices, checkedTipPercent));
+        System.out.println(calculateTip(prices, tipPercent));
+
     }
 
-    public static int checkAndReturnInRange(int tipPercent) {
-        if (tipPercent < 10 || tipPercent > 80) {
-            return -1;
-        }
-
-        return tipPercent;
+    public static boolean isValidNumber(int tipPercent) {
+        return (tipPercent >= 10 && tipPercent <= 80);
     }
 
-    public static int calculateTip(int[] prices, int tipPercent) {
-        if (tipPercent == -1)
-            return -1;
+    public static int getTipWithinRange(int tipPercent) {
+        return isValidNumber(tipPercent) ? tipPercent : -1;
+    }
+
+    public static int calculateSumPrices(int[] prices) {
         int sumPrices = 0;
         for (int price : prices) {
             sumPrices += price;
         }
-        return (sumPrices * tipPercent) / 100;
+        return sumPrices;
+    }
+
+    public static int calculateTip(int[] prices, int tipPercent) {
+        int ValidTip = getTipWithinRange(tipPercent);
+        if (ValidTip == -1) {
+            return -1;
+        }
+        int sumPrices = calculateSumPrices(prices);
+        return (sumPrices * ValidTip) / 100;
     }
 }
