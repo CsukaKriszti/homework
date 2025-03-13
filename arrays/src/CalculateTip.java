@@ -7,6 +7,7 @@ public class CalculateTip {
         int[] prices = {2000, 250, 300, 50, 250};
         System.out.print("Please enter what percentage tip you would like to give.: ");
         int tipPercent = Integer.parseInt(scanner.nextLine());
+        scanner.close();
         System.out.println(calculateTip(prices, tipPercent));
 
     }
