@@ -70,7 +70,7 @@ public class StrangePolynomialSum {
                     }
                 }
             }
-            System.out.println(sum);
+            System.out.println(sum*number);
 
         }
 
