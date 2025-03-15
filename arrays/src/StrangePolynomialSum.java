@@ -106,21 +106,7 @@ public class StrangePolynomialSum {
     public static int countStrangePolynomialSum2(int number) {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
-            switch (i % 4) {
-                case 1:
-                    sum += i;
-                    break;
-                case 2:
-                    sum += (int) Math.pow(i, 2);
-                    break;
-                case 3:
-                    sum += (int) Math.pow(i, 3);
-                    break;
-                case 0:
-                    sum += (int) Math.pow(i, 4);
-                    break;
-            }
-
+            sum += (int) Math.pow(i, i % 4 == 0 ? 4 : i % 4);
         }
         return sum;
     }
