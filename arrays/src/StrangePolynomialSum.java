@@ -106,20 +106,22 @@ public class StrangePolynomialSum {
     public static int countStrangePolynomialSum2(int number) {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
-            sum += (i%4==1) ? i : (int) ((i % 4 == 2) ? Math.pow(i, 2) : (i % 4 == 3)
-                    ? Math.pow(i, 3) : Math.pow(i, 4));
-//            if (i % 4 == 1)
-//                sum += i;
-//            else if (i % 4 == 2) {
-//                sum += (int) Math.pow(i, 2);
-//            } else if (i % 4 == 3) {
-//                sum += (int) Math.pow(i, 3);
-//            } else {
-//                sum += (int) Math.pow(i, 4);
-//            }
+            switch (i % 4) {
+                case 1:
+                    sum += i;
+                    break;
+                case 2:
+                    sum += (int) Math.pow(i, 2);
+                    break;
+                case 3:
+                    sum += (int) Math.pow(i, 3);
+                    break;
+                case 0:
+                    sum += (int) Math.pow(i, 4);
+                    break;
+            }
 
         }
         return sum;
-
     }
 }
