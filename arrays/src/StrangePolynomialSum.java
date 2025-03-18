@@ -19,7 +19,7 @@ public class StrangePolynomialSum {
         System.out.println("Difficult strange task solution: ");
         int difficultStrangeSum = countDifficultStrangeSum(number);
         System.out.println(checkInputAndComputeSum(difficultStrangeSum));
-        System.out.println(countDifficultStrangeSum2(number));
+        System.out.println(calculateDifficultStrangeSum2(number));
 
     }
 
@@ -32,13 +32,14 @@ public class StrangePolynomialSum {
         return isGreaterThanOne(number) ? stringNumber : "End of the application";
 
     }
-    public static int calculateIndexValue(int index){
-        int mod5 = (index % 5 == 0) ? 2 : 1;
-        int mod3 = (index % 3 == 1) ? index : (index % 3 == 2) ? index * index : index * index * index;
+
+    public static int calculateIndexValue(int currentNumber) {
+        int mod5 = (currentNumber % 5 == 0) ? 2 : 1;
+        int mod3 = (currentNumber % 3 == 1) ? currentNumber : (currentNumber % 3 == 2) ? currentNumber * currentNumber : currentNumber * currentNumber * currentNumber;
         return mod5 * mod3;
     }
 
-    public static int countDifficultStrangeSum2(int number) {
+    public static int calculateDifficultStrangeSum2(int number) {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
             if (i % 2 == 0) {
