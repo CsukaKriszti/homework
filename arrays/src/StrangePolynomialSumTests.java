@@ -31,6 +31,34 @@ public class StrangePolynomialSumTests {
     }
 
     @Test
+    void testCountStrangePolynomialSumWithOne() {
+        int number = 1;
+        int result = StrangePolynomialSum.countStrangePolynomialSum(number);
+        Assertions.assertEquals(1, result);
+    }
+
+    @Test
+    void testCountStrangePolynomialSumWithZero() {
+        int number = 0;
+        int result = StrangePolynomialSum.countStrangePolynomialSum(number);
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
+    void testCountStrangePolynomialSumWithFour() {
+        int number = 4;
+        int result = StrangePolynomialSum.countStrangePolynomialSum(number);
+        Assertions.assertEquals(288, result);
+    }
+
+    @Test
+    void testCountStrangePolynomialSumWithNegativeNumber() {
+        int number = -1;
+        int result = StrangePolynomialSum.countStrangePolynomialSum(number);
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
     void returnValidStrangePolynomialSum2() {
         int number = 11;
         int result = StrangePolynomialSum.countStrangePolynomialSum2(number);
