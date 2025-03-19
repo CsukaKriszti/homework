@@ -75,49 +75,49 @@ public class StrangePolynomialSumTests {
     @Test
     void returnValidCurrentNumberIfTheNumberIs6() {
         int number = 6;
-        int result = StrangePolynomialSum.calculateIndexValue(number);
+        int result = StrangePolynomialSum.determineIndex(number);
         Assertions.assertEquals(216, result);
     }
 
     @Test
     void returnValidCurrentNumberIfTheNumberIs5() {
         int number = 5;
-        int result = StrangePolynomialSum.calculateIndexValue(number);
+        int result = StrangePolynomialSum.determineIndex(number);
         Assertions.assertEquals(50, result);
     }
 
     @Test
     void returnValidCurrentNumberIfTheNumberIs4() {
         int number = 4;
-        int result = StrangePolynomialSum.calculateIndexValue(number);
+        int result = StrangePolynomialSum.determineIndex(number);
         Assertions.assertEquals(4, result);
     }
 
     @Test
     void returnValidCurrentNumberIfTheNumberIs3() {
         int number = 3;
-        int result = StrangePolynomialSum.calculateIndexValue(number);
+        int result = StrangePolynomialSum.determineIndex(number);
         Assertions.assertEquals(27, result);
     }
 
     @Test
     void returnValidCurrentNumberIfTheNumberIs2() {
         int number = 2;
-        int result = StrangePolynomialSum.calculateIndexValue(number);
+        int result = StrangePolynomialSum.determineIndex(number);
         Assertions.assertEquals(4, result);
     }
 
     @Test
     void returnValidCurrentNumberIfTheNumberIs1() {
         int number = 1;
-        int result = StrangePolynomialSum.calculateIndexValue(number);
+        int result = StrangePolynomialSum.determineIndex(number);
         Assertions.assertEquals(1, result);
     }
 
     @Test
     void returnValidCurrentNumberIfTheNumberIsNegative() {
         int number = -1;
-        int result = StrangePolynomialSum.calculateIndexValue(number);
+        int result = StrangePolynomialSum.determineIndex(number);
         Assertions.assertEquals(-1, result);
     }
 
@@ -155,6 +155,5 @@ public class StrangePolynomialSumTests {
         int result = StrangePolynomialSum.calculateDifficultStrangeSum2(number);
         Assertions.assertEquals(6897, result);
     }
-
 
 }

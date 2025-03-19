@@ -33,7 +33,7 @@ public class StrangePolynomialSum {
 
     }
 
-    public static int calculateIndexValue(int currentNumber) {
+    public static int determineIndex(int currentNumber) {
         int mod5 = (currentNumber % 5 == 0) ? 2 : 1;
         int mod3 = (currentNumber % 3 == 1) ? currentNumber : (currentNumber % 3 == 2) ? currentNumber * currentNumber : currentNumber * currentNumber * currentNumber;
         return mod5 * mod3;
@@ -43,9 +43,9 @@ public class StrangePolynomialSum {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
             if (i % 2 == 0) {
-                sum -= calculateIndexValue(i);
+                sum -= determineIndex(i);
             } else {
-                sum += calculateIndexValue(i);
+                sum += determineIndex(i);
             }
         }
         return sum * number;
