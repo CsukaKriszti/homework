@@ -1,57 +1,20 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class PrimeListerTests {
-    @Test
-    void isPrimeNumberZero() {
-        int number = 0;
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 4, -3, -11, 2_000_000_000})
+    void isPrimeNumberFalse(int number) {
         boolean result = PrimeLister.isPrimeNumber(number);
         Assertions.assertFalse(result);
     }
 
-    @Test
-    void isPrimeNumber1() {
-        int number = 1;
-        boolean result = PrimeLister.isPrimeNumber(number);
-        Assertions.assertFalse(result);
-    }
-
-    @Test
-    void isPrimeNumber2() {
-        int number = 2;
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3, 5, 11, 2_000_000_033})
+    void isPrimeNumberTrue(int number) {
         boolean result = PrimeLister.isPrimeNumber(number);
         Assertions.assertTrue(result);
     }
-
-    @Test
-    void isPrimeNumber3() {
-        int number = 3;
-        boolean result = PrimeLister.isPrimeNumber(number);
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    void isPrimeNumber4() {
-        int number = 4;
-        boolean result = PrimeLister.isPrimeNumber(number);
-        Assertions.assertFalse(result);
-    }
-
-    @Test
-    void isPrimeNumber2_000_000_000() {
-        int number = 2_000_000_000;
-        boolean result = PrimeLister.isPrimeNumber(number);
-        Assertions.assertFalse(result);
-
-    }
-
-    @Test
-    void isPrimeForOutOfRangeNumberShouldReturnTrue() {
-        int number = 2_000_000_033;
-        boolean result = PrimeLister.isPrimeNumber(number);
-        Assertions.assertTrue(result);
-
-    }
-
 
 }

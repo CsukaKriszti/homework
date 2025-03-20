@@ -1,46 +1,21 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class SquareNumberListerTests {
-    @Test
-    void isNumberZeroReturnFalse() {
-        int number = 0;
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, 2, -16})
+    void isSquareNumberFalse(int number) {
         boolean result = SquareNumberLister.isSquareNumber(number);
         Assertions.assertFalse(result);
     }
 
-    @Test
-    void isNumberNegativeReturnFalse() {
-        int number = -1;
-        boolean result = SquareNumberLister.isSquareNumber(number);
-        Assertions.assertFalse(result);
-    }
-
-    @Test
-    void isNumber1ReturnTrue() {
-        int number = 1;
+    @ParameterizedTest
+    @ValueSource(ints = {1, 4, 9, 16})
+    void isSquareNumberTrue(int number) {
         boolean result = SquareNumberLister.isSquareNumber(number);
         Assertions.assertTrue(result);
     }
 
-    @Test
-    void isNumber2ReturnFalse() {
-        int number = 2;
-        boolean result = SquareNumberLister.isSquareNumber(number);
-        Assertions.assertFalse(result);
-    }
 
-    @Test
-    void isNumber3ReturnFalse() {
-        int number = 0;
-        boolean result = SquareNumberLister.isSquareNumber(number);
-        Assertions.assertFalse(result);
-    }
-
-    @Test
-    void isNumber4ReturnTrue() {
-        int number = 4;
-        boolean result = SquareNumberLister.isSquareNumber(number);
-        Assertions.assertTrue(result);
-    }
 }

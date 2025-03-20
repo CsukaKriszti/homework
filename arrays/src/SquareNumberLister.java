@@ -26,15 +26,15 @@ public class SquareNumberLister {
         do {
             System.out.print("Please enter a number: ");
             int number = Integer.parseInt(scanner.nextLine());
-            if (number >= 2 && number <= 2_000_000_000)
+            if (number >= 2 && number <= 2_000_000_000) {
                 return number;
+            }
             count++;
         } while (count < 5);
         return -1;
     }
 
     public static boolean isSquareNumber(int number) {
-        return number > 0 ? Math.sqrt(number) % 1 == 0 : false;
-//      return number > 0 && Math.sqrt(number) % 1 == 0; ez az intelliJ ajánlata a sajátom jobban tetszik
+        return number > 0 && Math.sqrt(number) % 1 == 0;
     }
 }

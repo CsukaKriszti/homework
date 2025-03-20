@@ -33,19 +33,19 @@ public class StrangePolynomialSum {
 
     }
 
-    public static int determineIndex(int currentNumber) {
-        int mod5 = (currentNumber % 5 == 0) ? 2 : 1;
-        int mod3 = (currentNumber % 3 == 1) ? currentNumber : (currentNumber % 3 == 2) ? currentNumber * currentNumber : currentNumber * currentNumber * currentNumber;
-        return mod5 * mod3;
+    public static int numberModifier(int currentNumber) {
+        int fiveBasedMultiplier5 = (currentNumber % 5 == 0) ? 2 : 1;
+        int calculatedValue = (currentNumber % 3 == 1) ? currentNumber : (currentNumber % 3 == 2) ? currentNumber * currentNumber : currentNumber * currentNumber * currentNumber;
+        return fiveBasedMultiplier5 * calculatedValue;
     }
 
     public static int calculateDifficultStrangeSum2(int number) {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
             if (i % 2 == 0) {
-                sum -= determineIndex(i);
+                sum -= numberModifier(i);
             } else {
-                sum += determineIndex(i);
+                sum += numberModifier(i);
             }
         }
         return sum * number;

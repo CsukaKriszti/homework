@@ -1,159 +1,43 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
 
 public class StrangePolynomialSumTests {
-    @Test
-    void returnFalseWhenNumberLessThan1() {
-        int number = 0;
+    @ParameterizedTest
+    @ValueSource(ints = {0, -4, 1})
+    void isGreaterThanOneFalse(int number) {
         boolean result = StrangePolynomialSum.isGreaterThanOne(number);
         Assertions.assertFalse(result);
     }
 
-    @Test
-    void returnFalseWhenNumberIsNegative() {
-        int number = -4;
-        boolean result = StrangePolynomialSum.isGreaterThanOne(number);
-        Assertions.assertFalse(result);
-    }
-
-    @Test
-    void returnTrueWhenNumberGreaterThan1() {
-        int number = 2;
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3})
+    void isGreaterThanOneTrue(int number) {
         boolean result = StrangePolynomialSum.isGreaterThanOne(number);
         Assertions.assertTrue(result);
     }
 
-    @Test
-    void returnValidStrangePolynomialSum() {
-        int number = 17;
+    @ParameterizedTest
+    @CsvSource({"0,0", "-1,0", "1,1", "4 ,288", "17,96081"})
+    void returnValidStrangePolynomialSum(int number, int expected) {
         int result = StrangePolynomialSum.countStrangePolynomialSum(number);
-        Assertions.assertEquals(96081, result);
+        Assertions.assertEquals(expected, result);
     }
 
-    @Test
-    void testCountStrangePolynomialSumWithOne() {
-        int number = 1;
-        int result = StrangePolynomialSum.countStrangePolynomialSum(number);
-        Assertions.assertEquals(1, result);
+    @ParameterizedTest
+    @CsvSource({"-1,-1", "1,1", "2,4", "3,27", "4,4", "5,50", "6,216"})
+    void returnValidModifiedNumber(int number, int expected) {
+        int result = StrangePolynomialSum.numberModifier(number);
+        Assertions.assertEquals(expected, result);
     }
 
-    @Test
-    void testCountStrangePolynomialSumWithZero() {
-        int number = 0;
-        int result = StrangePolynomialSum.countStrangePolynomialSum(number);
-        Assertions.assertEquals(0, result);
-    }
-
-    @Test
-    void testCountStrangePolynomialSumWithFour() {
-        int number = 4;
-        int result = StrangePolynomialSum.countStrangePolynomialSum(number);
-        Assertions.assertEquals(288, result);
-    }
-
-    @Test
-    void testCountStrangePolynomialSumWithNegativeNumber() {
-        int number = -1;
-        int result = StrangePolynomialSum.countStrangePolynomialSum(number);
-        Assertions.assertEquals(0, result);
-    }
-
-    @Test
-    void returnValidStrangePolynomialSum2() {
-        int number = 11;
-        int result = StrangePolynomialSum.countStrangePolynomialSum2(number);
-        Assertions.assertEquals(6208, result);
-    }
-
-    @Test
-    void returnValidDifficultStrangePolynomialSum() {
-        int number = 11;
-        int result = StrangePolynomialSum.countDifficultStrangeSum(number);
-        Assertions.assertEquals(6897, result);
-    }
-
-    @Test
-    void returnValidCurrentNumberIfTheNumberIs6() {
-        int number = 6;
-        int result = StrangePolynomialSum.determineIndex(number);
-        Assertions.assertEquals(216, result);
-    }
-
-    @Test
-    void returnValidCurrentNumberIfTheNumberIs5() {
-        int number = 5;
-        int result = StrangePolynomialSum.determineIndex(number);
-        Assertions.assertEquals(50, result);
-    }
-
-    @Test
-    void returnValidCurrentNumberIfTheNumberIs4() {
-        int number = 4;
-        int result = StrangePolynomialSum.determineIndex(number);
-        Assertions.assertEquals(4, result);
-    }
-
-    @Test
-    void returnValidCurrentNumberIfTheNumberIs3() {
-        int number = 3;
-        int result = StrangePolynomialSum.determineIndex(number);
-        Assertions.assertEquals(27, result);
-    }
-
-    @Test
-    void returnValidCurrentNumberIfTheNumberIs2() {
-        int number = 2;
-        int result = StrangePolynomialSum.determineIndex(number);
-        Assertions.assertEquals(4, result);
-    }
-
-    @Test
-    void returnValidCurrentNumberIfTheNumberIs1() {
-        int number = 1;
-        int result = StrangePolynomialSum.determineIndex(number);
-        Assertions.assertEquals(1, result);
-    }
-
-    @Test
-    void returnValidCurrentNumberIfTheNumberIsNegative() {
-        int number = -1;
-        int result = StrangePolynomialSum.determineIndex(number);
-        Assertions.assertEquals(-1, result);
-    }
-
-    @Test
-    void returnDifficultStrangeSum2WhenTheNumberIsZero() {
-        int number = 0;
+    @ParameterizedTest
+    @CsvSource({"0,0", "-1,0", "1,1", "2,-6", "11,6897"})
+    void returnValidDifficultStrangeSum2(int number, int expected) {
         int result = StrangePolynomialSum.calculateDifficultStrangeSum2(number);
-        Assertions.assertEquals(0, result);
-    }
-
-    @Test
-    void returnDifficultStrangeSum2WhenTheNumberIsNegative() {
-        int number = -1;
-        int result = StrangePolynomialSum.calculateDifficultStrangeSum2(number);
-        Assertions.assertEquals(0, result);
-    }
-
-    @Test
-    void returnDifficultStrangeSum2WhenTheNumberIs1() {
-        int number = 1;
-        int result = StrangePolynomialSum.calculateDifficultStrangeSum2(number);
-        Assertions.assertEquals(1, result);
-    }
-
-    @Test
-    void returnDifficultStrangeSum2WhenTheNumber2() {
-        int number = 2;
-        int result = StrangePolynomialSum.calculateDifficultStrangeSum2(number);
-        Assertions.assertEquals(-6, result);
-    }
-
-    @Test
-    void returnDifficultStrangeSum2WhenTheNumberGreaterThan10() {
-        int number = 11;
-        int result = StrangePolynomialSum.calculateDifficultStrangeSum2(number);
-        Assertions.assertEquals(6897, result);
+        Assertions.assertEquals(expected, result);
     }
 
 }
