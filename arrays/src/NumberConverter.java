@@ -5,7 +5,7 @@ public class NumberConverter {
     static final String[] ONE_TO_NINETEEN = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
     static final String[] TWENTY_TO_NINETY = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
     static final String HUNDRED = "hundred";
-    static final String[] THOUSANDS = {"thousand", "million", "billion", "million"};
+    static final String[] THOUSANDS = {"","thousand", "million", "billion", "million"};
 
 
     public static String convertNumberToWord(int number) {

@@ -14,14 +14,18 @@ public class StrongNumbers {
         }
         return numbers;
     }
-
-    public static int calculateFactorial(int number) {
-        int result = 1;
-        for (int i = 1; i <= number; i++) {
-            result *= i;
-        }
-        return result;
+    public static int calculateFactorial(int number){
+        int[] factorials = {1,1,2,6,24,120,720,5040,40320,362880};
+        return factorials[number];
     }
+
+    //public static int calculateFactorial(int number) {
+    //    int result = 1;
+    //    for (int i = 1; i <= number; i++) {
+    //        result *= i;
+    //    }
+    //    return result;
+    //}
 
     public static int[] convertDigitsToFactorials(int number) {
         int[] numbers = splitNumberIntoDigits(number);
