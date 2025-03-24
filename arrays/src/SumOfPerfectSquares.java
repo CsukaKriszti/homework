@@ -4,18 +4,13 @@ public class SumOfPerfectSquares {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        try {
-            printSumOfPerfectSquares();
-        } finally {
-            scanner.close();
-        }
-        
+        printSumOfPerfectSquares();
+        scanner.close();
     }
 
     public static int getNumberFromConsole() {
         System.out.println("Please enter a number: ");
         return Integer.parseInt(scanner.nextLine());
-
     }
 
     public static boolean isValidNumber(int number) {
