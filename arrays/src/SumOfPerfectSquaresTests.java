@@ -27,5 +27,3 @@ public class SumOfPerfectSquaresTests {
         assertEquals(expected, result);
     }
 }
-
-

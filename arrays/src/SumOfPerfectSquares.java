@@ -33,5 +33,4 @@ public class SumOfPerfectSquares {
             System.out.println("Wrong input!");
         }
     }
-
 }
