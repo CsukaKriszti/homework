@@ -3,7 +3,7 @@ import java.util.List;
 
 public class PrimeFactorization {
     public static void main(String[] args) {
-        int number = 100;
+        int number = 2_000_000_000;
         System.out.println(getPrimeFactors(number));
     }
 
@@ -31,7 +31,6 @@ public class PrimeFactorization {
 
     public static List<Integer> createPrimeList(List<Boolean> primes) {
         List<Integer> primeList = new ArrayList<>();
-        int index = 0;
         for (int i = 2; i < primes.size(); i++) {
             if (primes.get(i)) {
                 primeList.add(i);
