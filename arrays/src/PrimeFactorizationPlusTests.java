@@ -9,19 +9,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PrimeFactorizationPlusTests {
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 4, -3, -11,})
-    void isPrimeNumberFalse(int number) {
-        boolean result = PrimeLister.isPrimeNumber(number);
-        Assertions.assertFalse(result);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {2, 3, 5, 11, 107})
-    void isPrimeNumberTrue(int number) {
-        boolean result = PrimeLister.isPrimeNumber(number);
-        Assertions.assertTrue(result);
-    }
     @Test
     void shouldReturnPrimeFactorsOfNumber100() {
         int number = 100;

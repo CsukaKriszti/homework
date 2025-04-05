@@ -3,26 +3,18 @@ import java.util.List;
 
 public class PrimeFactorizationPlus {
     public static void main(String[] args) {
-        System.out.println(getPrimeFactors(2_000_000_000));
+        System.out.println(getPrimeFactors(100));
 
-    }
-
-    public static boolean isPrimeNumber(int number) {
-        if (number <= 1) {
-            return false;
-        }
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     public static List<Integer> getPrimeFactors(int number) {
         List<Integer> primeFactorialNumbers = new ArrayList<>();
-        for (int i = 0; i < number; i++) {
-            if (isPrimeNumber(i)) {
+        if (number > 1) {
+            while (number % 2 == 0) {
+                number /= 2;
+                primeFactorialNumbers.add(2);
+            }
+            for (int i = 3; i <= Math.sqrt(number); i += 2) {
                 while (number % i == 0) {
                     number /= i;
                     primeFactorialNumbers.add(i);
