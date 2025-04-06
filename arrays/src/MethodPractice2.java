@@ -26,12 +26,8 @@ public class MethodPractice2 {
         System.out.println(calculateStringLengthFactorial("lemon"));
         System.out.println("10. Gets in a number and returns 100 divided by that number");
         System.out.println(calculateHundredReciprocal(50));
-        System.out.println("11.a Gets in a number and returns the square of it if it is prime");
-        System.out.println(calculateSquareIfPrime(45));
-        System.out.println("11.b Gets in a number and returns the double of it if it is not a prime and is divisible by 4");
-        System.out.println(calculateDoubleIfDivisibleByFourAndNotPrime(44));
-        System.out.println("11.c Gets in a number and returns the triple of it if it is not a prime and is not divisible by 4");
-        System.out.println(calculateTripleIfNotPrimeAndNotDivisibleByFour(9));
+        System.out.println("11.a,b,c");
+        System.out.println(calculateModifiedValue(11));
         System.out.println("12. Gets in an array of Strings and returns a new array of numbers of each String’s length");
         System.out.println(Arrays.toString(convertStringsToLengths("apple", "pear", "cherry")));
         System.out.println("13. Gets in a gross salary and calculates the net salary according to the Hungarian rules in the following way:" +
@@ -46,7 +42,7 @@ public class MethodPractice2 {
     }
 
     public static int[] filterNegativeValues(int... numbers) {
-        int counter = getCounter(numbers);
+        int counter = countNegativeElements(numbers);
         int[] negativeNumbers = new int[counter];
         int index = 0;
         for (int number : numbers) {
@@ -57,7 +53,7 @@ public class MethodPractice2 {
         return negativeNumbers;
     }
 
-    public static int getCounter(int... numbers) {
+    public static int countNegativeElements(int... numbers) {
         int counter = 0;
         for (int number : numbers) {
             if (number < 0) {
@@ -95,16 +91,9 @@ public class MethodPractice2 {
         return length;
     }
 
-    public static int calculateTripleIfNotPrimeAndNotDivisibleByFour(int number) {
-        return (!isPrimeNumber(number) && number % 4 != 0) ? number * 3 : -1;
-    }
-
-    public static int calculateDoubleIfDivisibleByFourAndNotPrime(int number) {
-        return (!isPrimeNumber(number) && number % 4 == 0) ? number * 2 : -1;
-    }
-
-    public static int calculateSquareIfPrime(int number) {
-        return isPrimeNumber(number) ? number * number : -1;
+    public static int calculateModifiedValue(int number) {
+        return isPrimeNumber(number) ? number * number : (number % 4 == 0) ? number * 2 :
+                number * 3;
     }
 
     public static boolean isPrimeNumber(int number) {
@@ -127,9 +116,6 @@ public class MethodPractice2 {
     }
 
     public static int calculateStringLengthFactorial(String text) {
-        if (text.isEmpty()) {
-            return 0;
-        }
         int textLengthFactorial = 1;
         for (int i = 1; i <= text.length(); i++) {
             textLengthFactorial *= i;
@@ -154,7 +140,7 @@ public class MethodPractice2 {
     }
 
     public static double calculateThirtyPercent(int number) {
-        return (number * 0.30);
+        return (number * 0.3);
     }
 
     public static void writesWelcomeMessageToConsole() {
