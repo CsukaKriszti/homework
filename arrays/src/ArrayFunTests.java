@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ArrayFunTests {
     @Test
     void returnAverage() {
-        assertEquals(2, ArrayFun.countAverage(0, 1, 2, 3, 4, -5, 6, 7, 8, 9, -10));
+        assertEquals(2, ArrayFun.calculateAverage(0, 1, 2, 3, 4, -5, 6, 7, 8, 9, -10));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ArrayFunTests {
 
     @Test
     void testHasDuplicatesFalse() {
-        int[] numbers = {3, 5, 6, 7, 8, 9, 10};
+        int[] numbers = {3, 5, 6, 7, 3, 6, 5};
         assertFalse(ArrayFun.hasConsecutiveDuplicates(numbers));
 
     }
@@ -91,7 +91,7 @@ public class ArrayFunTests {
 
     @Test
     void returnInvertedWord() {
-        assertEquals("seirots", ArrayFun.replaceLetter("stories"));
+        assertEquals("seirots", ArrayFun.reverseString("stories"));
     }
 
     @Test
@@ -126,15 +126,15 @@ public class ArrayFunTests {
     }
 
     @Test
-    void isTrueAllSubarraysContainStringEndingWithS() {
+    void isTrueStringEndingWithSInEverySubarray() {
         String[][][] texts = {{{"E", "as"}, {"ooo", "ABS"}}, {{"Bananas"}, {"sos"}}};
-        assertTrue(ArrayFun.hasAllSubarraysContainStringEndingWithS(texts));
+        assertTrue(ArrayFun.hasStringEndingWithSInEverySubarray(texts));
     }
 
     @Test
-    void isFalseAllSubarraysContainStringEndingWithS() {
+    void isFalseStringEndingWithSInEverySubarray() {
         String[][][] texts = {{{"E", "a"}, {"ABs"}}, {{"Bananas"}, {"hello"}}};
-        assertFalse(ArrayFun.hasAllSubarraysContainStringEndingWithS(texts));
+        assertFalse(ArrayFun.hasStringEndingWithSInEverySubarray(texts));
     }
 
     @Test
@@ -151,24 +151,31 @@ public class ArrayFunTests {
     }
 
     @Test
-    void isFalseAllSubarraysContainStringEndingWithS2() {
-        String[][][] texts = {{{"Es", "a"}, {"ABs"}}, {{"Bananas"}, {"hello"}}};
-        assertFalse(ArrayFun.hasAllSubarraysContainStringEndingWithS(texts));
+    void returnTrueIfAllLowercaseCharacters() {
+        String text = "apples";
+        assertTrue(ArrayFun.isAllLowercaseCharacter(text));
     }
 
     @Test
-    void returnSumOfLowercaseCharacters() {
-        char[][][][] chars = {{{{'A', 'B'}, {'C', 'D'}}, {{'E', 'F'}, {'g', 'H'}}},
-                {{{'I', 'J'}, {'K', 'L'}}, {{'M', 'N'}, {'O', 'P'}}}};
-        assertEquals(1, ArrayFun.countLowercaseCharacters(chars));
+    void returnFalseIfAllLowercaseCharacters() {
+        String text = "Apples";
+        assertFalse(ArrayFun.isAllLowercaseCharacter(text));
+
+    }
+
+    @Test
+    void returnSumOfLowercaseStrings() {
+        String[][][][] texts = {{{{"AA", "Bb"}, {"Cc", "DD"}}, {{"ee", "F"}, {"gggggg", "H"}}},
+                {{{"Ii", "Jj"}, {"Kk", "Ll"}}, {{"Mmmmm", "Nnnnnn"}, {"Ooooo", "Pppppp"}}}};
+        assertEquals(2, ArrayFun.countLowercaseStrings(texts));
     }
 
     @Test
     void returnReverseChar4DArray() {
         String[][][][] chars = {{{{"Ab", "Ba"}, {"Ca", "Da"}}, {{"Ea", "Fa"}, {"Ga", "Ha"}}},
                 {{{"Ia", "Ja"}, {"Ka", "La"}}, {{"Ma", "Na"}, {"Oa", "Pa"}}}};
-        String[][][][] result = {{{{"aB", "bA"}, {"aD", "aC"}}, {{"aF", "aE"}, {"aH", "aG"}}},
-                {{{"aJ", "aI"}, {"aL", "aK"}}, {{"aN", "aM"}, {"aP", "aO"}}}};
+        String[][][][] result = {{{{"bA", "aB"}, {"aC", "aD"}}, {{"aE", "aF"}, {"aG", "aH"}}},
+                {{{"aI", "aJ"}, {"aK", "aL"}}, {{"aM", "aN"}, {"aO", "aP"}}}};
         assertArrayEquals(result, ArrayFun.reverseString4DArray(chars));
 
     }
@@ -189,18 +196,10 @@ public class ArrayFunTests {
     }
 
     @Test
-    void returnShortestString() {
-        String[][][][] texts = {{{{"aaA", "babB"}, {"ccC", "dadaD"}}, {{"eE", "fF"}, {"gegg", "hhh"}}},
-                {{{"iiii", "jjjj"}, {"kkookk", "lloll"}}, {{"memimum", "nniinn"}, {"oo", "pp"}}}};
-        assertEquals(2, ArrayFun.findShortestStringLength(texts));
-    }
-
-    @Test
     void returnShortestStringsIn4DArray() {
         String[][][][] texts = {{{{"aaA", "babB"}, {"ccC", "dadaD"}}, {{"eE", "fF"}, {"gegg", "hhh"}}},
                 {{{"iiii", "jjjj"}, {"kkookk", "lloll"}}, {{"memimum", "nniinn"}, {"oo", "pp"}}}};
-        List<String> result = new ArrayList<>(List.of("eE", "fF", "oo", "pp"));
-        assertEquals(result, ArrayFun.findShortestStrings(texts));
+        assertEquals("eE", ArrayFun.findShortestString(texts));
     }
 
     @ParameterizedTest
@@ -218,7 +217,7 @@ public class ArrayFunTests {
     @Test
     void returnSumOfStringsWithoutEorR() {
         String[][][][][] texts = {{{{{"aaa"}, {"bbb"}}, {{"ccc"}, {"ddd"}}}, {{{"eee"}, {"fff"}}, {{"ggg"}, {"rrr"}}}}, {{{{"AAA"}, {"BBB"}}, {{"CCC"}, {"DDD"}}}, {{{"EEE"}, {"FFF"}}, {{"GGG"}, {"HHH"}}}}};
-        assertEquals(3, ArrayFun.countStringsWithoutEorR(texts));
+        assertEquals(13, ArrayFun.countStringsWithoutEorR(texts));
     }
 
     @Test
@@ -243,7 +242,7 @@ public class ArrayFunTests {
     @Test
     void returnSumOfWordsWithSameStartEnd() {
         String[][][][][] texts = {{{{{"za"}, {"bbaa"}}, {{"cccaaa"}, {"sd"}}}, {{{"eee"}, {"fff"}}, {{"ggg"}, {"rrr"}}}}, {{{{"AAA"}, {"BBB"}}, {{"CCC"}, {"DDD"}}}, {{{"EEE"}, {"FFF"}}, {{"GGG"}, {"HHH"}}}}};
-        assertEquals(12, ArrayFun.countWordsWithSameStartEnd(texts));
+        assertEquals(36, ArrayFun.countCharactersInWordsWithSameStartEnd(texts));
     }
 
     @Test

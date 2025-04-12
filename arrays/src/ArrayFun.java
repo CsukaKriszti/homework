@@ -7,7 +7,7 @@ public class ArrayFun {
     public static void main(String[] args) {
         System.out.println("1. Return the average of all even numbers in an array of integers. ");
         int[] numbers = {0, 1, 2, 3, 4, 4, 5, 6, 7, 8, 9};
-        System.out.println(countAverage(numbers));
+        System.out.println(calculateAverage(numbers));
         System.out.println("2. Return a new array with each number squared " +
                 "only if the original number was odd. If the original number" +
                 " was even, skip it from the new array.");
@@ -43,15 +43,13 @@ public class ArrayFun {
         System.out.println(findMaxStringLength(palindromeAndNormalWords));
         String[][][] texts2 = {{{"Es", "a"}, {"ooo", "ABS"}}, {{"Bananas"}, {"soo"}}};
         System.out.println("15. Return true if every subarray (3rd level) contains at least one string that ends with.");
-        System.out.println(hasAllSubarraysContainStringEndingWithS(texts2));
+        System.out.println(hasStringEndingWithSInEverySubarray(texts2));
         System.out.println("16. Return the total count of strings that contain only lowercase letters. " +
                 "Note: you can use Character.isLowerCase() to decide whether a character is lowercase or not.");
-        char[][][][] characters = {{{{'A', 'b'}, {'c', 'D'}}, {{'e', 'F'}, {'G', 'h'}}},
-                {{{'i', 'J'}, {'K', 'l'}}, {{'M', 'N'}, {'o', 'P'}}}};
-        System.out.println(countLowercaseCharacters(characters));
-        System.out.println("17. Return a new 4D array with the same structure, where each string is reversed.");
         String[][][][] texts4D = {{{{"aaA", "bbbbB"}, {"cccccC", "dddddD"}}, {{"eE", "fffff"}, {"ggg", "hhh"}}},
                 {{{"iiii", "jjjj"}, {"kkkk", "llll"}}, {{"mmmm", "nnnn"}, {"oo", "pp"}}}};
+        System.out.println(countLowercaseStrings(texts4D));
+        System.out.println("17. Return a new 4D array with the same structure, where each string is reversed.");
         System.out.println(Arrays.deepToString(reverseString4DArray(texts4D)));
         System.out.println("18. Return the average length of all strings, rounded down to the nearest integer.");
         System.out.println(calculateAverageStringLength(texts4D));
@@ -59,14 +57,14 @@ public class ArrayFun {
                 " (you don’t have to consider non-English vowels, only a, e, i, o and u).");
         System.out.println(getStringsWithMoreThanTwoVowels(texts4D));
         System.out.println("20. Return the shortest string across all dimensions.");
-        System.out.println(findShortestStrings(texts4D));
+        System.out.println(findShortestString(texts4D));
         System.out.println("21. Return the number of strings that do not contain the letters “e”, “E”, or “r”.");
         String[][][][][] texts5D = {{{{{"aaa"}, {"bbb"}}, {{"ccc"}, {"ddd"}}}, {{{"eee"}, {"fff"}}, {{"ggg"}, {"hhh"}}}}, {{{{"AAA"}, {"BBB"}}, {{"CCC"}, {"DDD"}}}, {{{"EEE"}, {"FFF"}}, {{"GGG"}, {"HHH"}}}}};
         System.out.println(countStringsWithoutEorR(texts5D));
         System.out.println("22. Return a new 5D array with all strings replaced by their lengths.");
         System.out.println(Arrays.deepToString(replaceStringsWithLengths(texts5D)));
         System.out.println("23. Return the total number of characters across all strings that start and end with the same letter.");
-        System.out.println(countWordsWithSameStartEnd(texts5D));
+        System.out.println(countCharactersInWordsWithSameStartEnd(texts5D));
         System.out.println("24. Return one big string, which is the concatenation of all strings.");
         System.out.println(concatenateAllStrings(texts5D));
 
@@ -77,15 +75,15 @@ public class ArrayFun {
         return (text.charAt(0) == text.charAt(text.length() - 1));
     }
 
-    public static int countWordsWithSameStartEnd(String[][][][][] texts) {
+    public static int countCharactersInWordsWithSameStartEnd(String[][][][][] texts) {
         int sum = 0;
-        for (String[][][][] subSubSubarray : texts) {
-            for (String[][][] subSubarray : subSubSubarray) {
-                for (String[][] subarray : subSubarray) {
-                    for (String[] array : subarray) {
+        for (String[][][][] fourDArray : texts) {
+            for (String[][][] threeDArray : fourDArray) {
+                for (String[][] twoDArray : threeDArray) {
+                    for (String[] array : twoDArray) {
                         for (String text : array) {
                             if (isWordsWithSameStartEnd(text)) {
-                                sum++;
+                                sum += text.length();
                             }
                         }
                     }
@@ -97,10 +95,10 @@ public class ArrayFun {
 
     public static String concatenateAllStrings(String[][][][][] texts) {
         StringBuilder sb = new StringBuilder();
-        for (String[][][][] subSubSubarray : texts) {
-            for (String[][][] subSubarray : subSubSubarray) {
-                for (String[][] subarray : subSubarray) {
-                    for (String[] array : subarray) {
+        for (String[][][][] fourDArray : texts) {
+            for (String[][][] threeDArray : fourDArray) {
+                for (String[][] twoDArray : threeDArray) {
+                    for (String[] array : twoDArray) {
                         for (String text : array) {
                             sb.append(text);
                         }
@@ -112,11 +110,15 @@ public class ArrayFun {
     }
 
     public static int[][][][][] replaceStringsWithLengths(String[][][][][] texts5D) {
-        int[][][][][] lengthOfStrings = new int[texts5D.length][texts5D[0].length][texts5D[0][0].length][texts5D[0][0][0].length][texts5D[0][0][0][0].length];
+        int[][][][][] lengthOfStrings = new int[texts5D.length][][][][];
         for (int i = 0; i < texts5D.length; i++) {
+            lengthOfStrings[i] = new int[texts5D[i].length][][][];
             for (int j = 0; j < texts5D[i].length; j++) {
+                lengthOfStrings[i][j] = new int[texts5D[i][j].length][][];
                 for (int k = 0; k < texts5D[i][j].length; k++) {
+                    lengthOfStrings[i][j][k] = new int[texts5D[i][j][k].length][];
                     for (int l = 0; l < texts5D[i][j][k].length; l++) {
+                        lengthOfStrings[i][j][k][l] = new int[texts5D[i][j][k][l].length];
                         for (int m = 0; m < texts5D[i][j][k][l].length; m++) {
                             lengthOfStrings[i][j][k][l][m] = texts5D[i][j][k][l][m].length();
                         }
@@ -133,12 +135,12 @@ public class ArrayFun {
 
     public static int countStringsWithoutEorR(String[][][][][] texts) {
         int sum = 0;
-        for (String[][][][] subSubSubarray : texts) {
-            for (String[][][] subSubarray : subSubSubarray) {
-                for (String[][] subarray : subSubarray) {
-                    for (String[] array : subarray) {
+        for (String[][][][] fourDArray : texts) {
+            for (String[][][] threeDArray : fourDArray) {
+                for (String[][] twoDArray : threeDArray) {
+                    for (String[] array : twoDArray) {
                         for (String text : array) {
-                            if (hasEorR(text)) {
+                            if (!hasEorR(text)) {
                                 sum++;
                             }
                         }
@@ -149,37 +151,22 @@ public class ArrayFun {
         return sum;
     }
 
-
-    public static int findShortestStringLength(String[][][][] texts) {
+    public static String findShortestString(String[][][][] texts) {
+        String shortestString = "";
         int min = Integer.MAX_VALUE;
-        for (String[][][] subSubarray : texts) {
-            for (String[][] subarray : subSubarray) {
-                for (String[] array : subarray) {
+        for (String[][][] threeDArray : texts) {
+            for (String[][] twoDArray : threeDArray) {
+                for (String[] array : twoDArray) {
                     for (String text : array) {
                         if (text.length() < min) {
                             min = text.length();
+                            shortestString = text;
                         }
                     }
                 }
             }
         }
-        return min;
-    }
-
-    public static List<String> findShortestStrings(String[][][][] texts) {
-        List<String> shortestStrings = new ArrayList<>();
-        for (String[][][] subSubarray : texts) {
-            for (String[][] subarray : subSubarray) {
-                for (String[] array : subarray) {
-                    for (String text : array) {
-                        if (text.length() == findShortestStringLength(texts)) {
-                            shortestStrings.add(text);
-                        }
-                    }
-                }
-            }
-        }
-        return shortestStrings;
+        return shortestString;
     }
 
     public static int countVowelSumInString(String text) {
@@ -197,9 +184,9 @@ public class ArrayFun {
 
     public static List<String> getStringsWithMoreThanTwoVowels(String[][][][] texts) {
         List<String> stringsWithMoreThanTwoVowels = new ArrayList<>();
-        for (String[][][] subSubarray : texts) {
-            for (String[][] subarray : subSubarray) {
-                for (String[] array : subarray) {
+        for (String[][][] threeDArray : texts) {
+            for (String[][] twoDArray : threeDArray) {
+                for (String[] array : twoDArray) {
                     for (String text : array) {
                         if (countVowelSumInString(text) > 2) {
                             stringsWithMoreThanTwoVowels.add(text);
@@ -211,12 +198,12 @@ public class ArrayFun {
         return stringsWithMoreThanTwoVowels;
     }
 
-    public static int calculateAverageStringLength(String[][][][] texts) {
+    public static double calculateAverageStringLength(String[][][][] texts) {
         double sum = 0;
         double stringCount = 0;
-        for (String[][][] subSubarray : texts) {
-            for (String[][] subarray : subSubarray) {
-                for (String[] array : subarray) {
+        for (String[][][] threeDArray : texts) {
+            for (String[][] twoDArray : threeDArray) {
+                for (String[] array : twoDArray) {
                     for (String text : array) {
                         sum += text.length();
                         stringCount++;
@@ -225,17 +212,19 @@ public class ArrayFun {
             }
         }
         double average = sum / stringCount;
-        return (int) Math.floor(average);
+        return Math.floor(average);
     }
 
     public static String[][][][] reverseString4DArray(String[][][][] strings) {
-        String[][][][] reverseStrings = new String[strings.length][strings[0].length][strings[0][0].length][strings[0][0][0].length];
-
+        String[][][][] reverseStrings = new String[strings.length][][][];
         for (int i = 0; i < strings.length; i++) {
+            reverseStrings[i] = new String[strings[i].length][][];
             for (int j = 0; j < strings[i].length; j++) {
+                reverseStrings[i][j] = new String[strings[i][j].length][];
                 for (int k = 0; k < strings[i][j].length; k++) {
+                    reverseStrings[i][j][k] = new String[strings[i][j][k].length];
                     for (int l = 0; l < strings[i][j][k].length; l++) {
-                        reverseStrings[i][j][k][l] = new StringBuilder(strings[i][j][k][strings[i][j][k].length - 1 - l]).reverse().toString();
+                        reverseStrings[i][j][k][l] = new StringBuilder(strings[i][j][k][l]).reverse().toString();
                     }
                 }
             }
@@ -243,13 +232,22 @@ public class ArrayFun {
         return reverseStrings;
     }
 
-    public static int countLowercaseCharacters(char[][][][] characters) {
+    public static boolean isAllLowercaseCharacter(String text) {
+        for (int i = 0; i < text.length(); i++) {
+            if (!Character.isLowerCase(text.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int countLowercaseStrings(String[][][][] characters) {
         int sum = 0;
-        for (char[][][] subSubarray : characters) {
-            for (char[][] subarray : subSubarray) {
-                for (char[] array : subarray) {
-                    for (char character : array) {
-                        if (character == Character.toLowerCase(character)) {
+        for (String[][][] threeDArray : characters) {
+            for (String[][] twoDArray : threeDArray) {
+                for (String[] array : twoDArray) {
+                    for (String text : array) {
+                        if (isAllLowercaseCharacter(text)) {
                             sum++;
                         }
                     }
@@ -268,9 +266,9 @@ public class ArrayFun {
         return false;
     }
 
-    public static boolean hasAllSubarraysContainStringEndingWithS(String[][][] texts) {
-        for (String[][] subarray : texts) {
-            for (String[] array : subarray) {
+    public static boolean hasStringEndingWithSInEverySubarray(String[][][] texts) {
+        for (String[][] twoDArray : texts) {
+            for (String[] array : twoDArray) {
                 if (!hasWordEndingWithS(array)) {
                     return false;
                 }
@@ -281,8 +279,8 @@ public class ArrayFun {
 
     public static int findMaxStringLength(String[][][] texts) {
         int largestStringLength = 0;
-        for (String[][] subarray : texts) {
-            for (String[] array : subarray) {
+        for (String[][] twoDArray : texts) {
+            for (String[] array : twoDArray) {
                 for (String text : array) {
                     if (text.length() > largestStringLength) {
                         largestStringLength = text.length();
@@ -295,8 +293,8 @@ public class ArrayFun {
 
     public static String concatenateStringsMinLength2(String[][][] texts) {
         StringBuilder concatenatedText = new StringBuilder();
-        for (String[][] subarray : texts) {
-            for (String[] array : subarray) {
+        for (String[][] twoDArray : texts) {
+            for (String[] array : twoDArray) {
                 for (String text : array) {
                     if (text.length() >= 2) {
                         concatenatedText.append(text);
@@ -309,8 +307,8 @@ public class ArrayFun {
 
     public static int countTotalStringsInThirdLevel(String[][][] texts) {
         int sum = 0;
-        for (String[][] subarray : texts) {
-            for (String[] array : subarray) {
+        for (String[][] twoDArray : texts) {
+            for (String[] array : twoDArray) {
                 sum += array.length;
             }
         }
@@ -320,8 +318,8 @@ public class ArrayFun {
     public static int[] fillArrayWithStringsLength(String[][][] texts) {
         int[] textsLength = new int[countTotalStringsInThirdLevel(texts)];
         int index = 0;
-        for (String[][] subarray : texts) {
-            for (String[] array : subarray) {
+        for (String[][] twoDArray : texts) {
+            for (String[] array : twoDArray) {
                 for (String text : array) {
                     textsLength[index++] = text.length();
                 }
@@ -330,7 +328,7 @@ public class ArrayFun {
         return textsLength;
     }
 
-    public static String replaceLetter(String word) {
+    public static String reverseString(String word) {
         StringBuilder invertedWord = new StringBuilder();
         for (int i = word.length() - 1; i >= 0; i--) {
             invertedWord.append(word.charAt(i));
@@ -340,10 +338,10 @@ public class ArrayFun {
 
     public static int countPalindromeWords(String[][][] texts) {
         int sum = 0;
-        for (String[][] subarray : texts) {
-            for (String[] array : subarray) {
+        for (String[][] twoDArray : texts) {
+            for (String[] array : twoDArray) {
                 for (String text : array) {
-                    if (replaceLetter(text).equals(text)) {
+                    if (reverseString(text).equals(text)) {
                         sum++;
                     }
                 }
@@ -366,8 +364,9 @@ public class ArrayFun {
 
     public static boolean[][] hasNumberInMatrix(String[][] textsAndNumbers) {
         String[] stringNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        boolean[][] booleanTextsAndNumbers = new boolean[textsAndNumbers.length][textsAndNumbers[0].length];
+        boolean[][] booleanTextsAndNumbers = new boolean[textsAndNumbers.length][];
         for (int i = 0; i < textsAndNumbers.length; i++) {
+            booleanTextsAndNumbers[i] = new boolean[textsAndNumbers[i].length];
             for (int j = 0; j < textsAndNumbers[i].length; j++) {
                 for (String stringNumber : stringNumbers) {
                     if (textsAndNumbers[i][j].contains(stringNumber)) {
@@ -379,7 +378,6 @@ public class ArrayFun {
         }
         return booleanTextsAndNumbers;
     }
-
 
     public static int calculateMatrixSize(String[][] texts) {
         int sum = 0;
@@ -420,7 +418,6 @@ public class ArrayFun {
         }
         return countSumOfNumbers(longestWordsSizeInSubtext);
     }
-
 
     public static int countVowelSumInMatrix(String[][] texts) {
         char[] vowels = {'a', 'e', 'i', 'o', 'u'};
@@ -472,8 +469,9 @@ public class ArrayFun {
         int[] oddNumbersSquared = new int[countOddNumbers(numbers)];
         int index = 0;
         for (int number : numbers) {
-            if (number % 2 != 0)
+            if (number % 2 != 0) {
                 oddNumbersSquared[index++] = number * number;
+            }
         }
         return oddNumbersSquared;
     }
@@ -488,7 +486,7 @@ public class ArrayFun {
         return size;
     }
 
-    public static double countAverage(int... numbers) {
+    public static double calculateAverage(int... numbers) {
         int sum = 0;
         int size = 0;
         for (int number : numbers) {
