@@ -89,10 +89,10 @@ public class ArrayFunTests {
         assertEquals(2.9166666666666665, ArrayFun.countAverageAllCharacters(texts));
     }
 
-    @Test
-    void returnInvertedWord() {
-        assertEquals("seirots", ArrayFun.reverseString("stories"));
-    }
+//    @Test
+//    void returnInvertedWord() {
+//        assertEquals("seirots", ArrayFun.reverseString("stories"));
+//    }
 
     @Test
     void returnSumOfPalindromes() {
@@ -194,6 +194,11 @@ public class ArrayFunTests {
         List<String> result = new ArrayList<>(List.of("aaA", "iiii", "memimum"));
         assertEquals(result, ArrayFun.getStringsWithMoreThanTwoVowels(texts));
     }
+    @Test
+    void returnShortestString(){
+       String[] texts = {"text","as","zip","a","clock"};
+       assertEquals("a",ArrayFun.findShortestString(texts));
+    }
 
     @Test
     void returnShortestStringsIn4DArray() {
@@ -241,8 +246,8 @@ public class ArrayFunTests {
 
     @Test
     void returnSumOfWordsWithSameStartEnd() {
-        String[][][][][] texts = {{{{{"za"}, {"bbaa"}}, {{"cccaaa"}, {"sd"}}}, {{{"eee"}, {"fff"}}, {{"ggg"}, {"rrr"}}}}, {{{{"AAA"}, {"BBB"}}, {{"CCC"}, {"DDD"}}}, {{{"EEE"}, {"FFF"}}, {{"GGG"}, {"HHH"}}}}};
-        assertEquals(36, ArrayFun.countCharactersInWordsWithSameStartEnd(texts));
+        String[][][][][] texts = {{{{{"apple"}, {"banana"}}, {{"cherry"}, {"dragon fruit"}}}, {{{"elderberry"}, {"fig"}}, {{"grapes"}, {"raspberry"}}}}, {{{{"noon"}, {"pip"}}, {{"stats"}, {"stars"}}}, {{{"arena"}, {"mom"}}, {{"dad"}, {"kayak"}}}}};
+        assertEquals(33, ArrayFun.countCharactersInWordsWithSameStartEnd(texts));
     }
 
     @Test

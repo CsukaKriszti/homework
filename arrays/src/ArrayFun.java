@@ -72,7 +72,7 @@ public class ArrayFun {
     }
 
     public static boolean isWordsWithSameStartEnd(String text) {
-        return (text.charAt(0) == text.charAt(text.length() - 1));
+        return text.charAt(0) == text.charAt(text.length() - 1);
     }
 
     public static int countCharactersInWordsWithSameStartEnd(String[][][][][] texts) {
@@ -150,6 +150,17 @@ public class ArrayFun {
         }
         return sum;
     }
+    public static String findShortestString(String[] texts){
+        String shortestString = "";
+        int min = Integer.MAX_VALUE;
+        for(String text : texts) {
+            if (text.length() < min) {
+                min = text.length();
+                shortestString = text;
+            }
+        }
+        return shortestString;
+    }
 
     public static String findShortestString(String[][][][] texts) {
         String shortestString = "";
@@ -158,7 +169,7 @@ public class ArrayFun {
             for (String[][] twoDArray : threeDArray) {
                 for (String[] array : twoDArray) {
                     for (String text : array) {
-                        if (text.length() < min) {
+                        if (text.equals(findShortestString(array)) && text.length() < min) {
                             min = text.length();
                             shortestString = text;
                         }
@@ -328,12 +339,16 @@ public class ArrayFun {
         return textsLength;
     }
 
-    public static String reverseString(String word) {
-        StringBuilder invertedWord = new StringBuilder();
-        for (int i = word.length() - 1; i >= 0; i--) {
-            invertedWord.append(word.charAt(i));
-        }
-        return invertedWord.toString();
+//    public static String reverseString(String word) {
+//        StringBuilder invertedWord = new StringBuilder();
+//        for (int i = word.length() - 1; i >= 0; i--) {
+//            invertedWord.append(word.charAt(i));
+//        }
+//        return invertedWord.toString();
+//    }
+    public static boolean isPalindrome(String text){
+        String reversed = new StringBuilder(text).reverse().toString();
+        return reversed.equals(text);
     }
 
     public static int countPalindromeWords(String[][][] texts) {
@@ -341,7 +356,7 @@ public class ArrayFun {
         for (String[][] twoDArray : texts) {
             for (String[] array : twoDArray) {
                 for (String text : array) {
-                    if (reverseString(text).equals(text)) {
+                    if (isPalindrome(text)) {
                         sum++;
                     }
                 }
