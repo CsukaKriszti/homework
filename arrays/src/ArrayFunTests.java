@@ -194,10 +194,11 @@ public class ArrayFunTests {
         List<String> result = new ArrayList<>(List.of("aaA", "iiii", "memimum"));
         assertEquals(result, ArrayFun.getStringsWithMoreThanTwoVowels(texts));
     }
+
     @Test
-    void returnShortestString(){
-       String[] texts = {"text","as","zip","a","clock"};
-       assertEquals("a",ArrayFun.findShortestString(texts));
+    void returnShortestString() {
+        String[] texts = {"text", "as", "zip", "a", "clock"};
+        assertEquals("a", ArrayFun.findShortestString(texts));
     }
 
     @Test
