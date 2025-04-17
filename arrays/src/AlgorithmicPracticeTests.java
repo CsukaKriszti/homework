@@ -18,7 +18,7 @@ public class AlgorithmicPracticeTests {
     }
 
     @ParameterizedTest
-    @CsvSource({"aaabbbbbbaaaaccccc,a2b5a3c4", "abaabbbbababaaa,a0b0a1b3a0b0a0b0a2"})
+    @CsvSource({"aaabbbbbbaaaaccccc,a3b6a4c5", "abaabbbbababaaa,a1b1a2b4a1b1a1b1a3"})
     void returnCompressText(String text, String result) {
         assertEquals(result, AlgorithmicPractice.compressText(text));
     }

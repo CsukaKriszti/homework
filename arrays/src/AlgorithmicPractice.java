@@ -9,12 +9,11 @@ public class AlgorithmicPractice {
     }
 
     public static boolean isPalindrome(String text) {
-        String reversed = new StringBuilder(text).reverse().toString();
-        return reversed.equals(text);
+        return text.contentEquals(new StringBuilder(text).reverse().toString());
     }
 
     public static String compressText(String strangeTexts) {
-        int counter = 0;
+        int counter = 1;
         StringBuilder compressedText = new StringBuilder();
         compressedText.append(strangeTexts.charAt(0));
         for (int i = 1; i < strangeTexts.length(); i++) {
@@ -23,7 +22,7 @@ public class AlgorithmicPractice {
             } else {
                 compressedText.append(counter);
                 compressedText.append(strangeTexts.charAt(i));
-                counter = 0;
+                counter = 1;
             }
         }
         return compressedText.append(counter).toString();
@@ -35,9 +34,8 @@ public class AlgorithmicPractice {
         if (number < 0) {
             String stringNegativeNumber = '-' + reversedStringNumber.substring(0, reversedStringNumber.length() - 1);
             return Integer.parseInt(stringNegativeNumber);
-        } else {
-            return Integer.parseInt(reversedStringNumber);
         }
+        return Integer.parseInt(reversedStringNumber);
     }
 
     public static int determineGreatestCommonDivisor(int firstNumber, int secondNumber) {
