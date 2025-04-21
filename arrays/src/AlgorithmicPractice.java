@@ -9,7 +9,7 @@ public class AlgorithmicPractice {
     }
 
     public static boolean isPalindrome(String text) {
-        return text.contentEquals(new StringBuilder(text).reverse().toString());
+        return text.contentEquals(new StringBuilder(text).reverse());
     }
 
     public static String compressText(String strangeTexts) {
