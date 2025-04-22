@@ -7,20 +7,43 @@ import java.util.List;
 
 public class RecamansSequence {
     public static void main(String[] args) {
+        System.out.println(fillListWithRecamansNumber(100));
+        List<Integer> recamansNumbers = new ArrayList<>();
+        System.out.println(fillListWithRecamansNumberRecursive(100, 0, 0, recamansNumbers));
+
+    }
+
+    public static List<Integer> fillListWithRecamansNumber(int size) {
         List<Integer> recamansNumbers = new ArrayList<>();
         int number = 0;
-        for(int i = 0; i < 100; i++){
-            if(number - i > 0 && !(recamansNumbers.contains(number - i))){
+        for (int i = 0; i < size; i++) {
+            if (number - i > 0 && !(recamansNumbers.contains(number - i))) {
                 number -= i;
                 recamansNumbers.add(number);
-            }else{
+            } else {
                 number += i;
                 recamansNumbers.add(number);
             }
         }
-        System.out.println(recamansNumbers);
+        return recamansNumbers;
     }
+
+    public static List<Integer> fillListWithRecamansNumberRecursive(int size, int index, int number, List<Integer> recamansNumbers) {
+        if (recamansNumbers.size() == size) {
+            return recamansNumbers;
+        }
+        if (number - index > 0 && !(recamansNumbers.contains(number - index))) {
+            number -= index;
+            recamansNumbers.add(number);
+        } else {
+            number += index;
+            recamansNumbers.add(number);
+        }
+        return fillListWithRecamansNumberRecursive(size, index + 1, number, recamansNumbers);
+    }
+
 }
+
 
 
 
