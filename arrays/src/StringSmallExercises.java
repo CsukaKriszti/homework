@@ -1,7 +1,7 @@
 public class StringSmallExercises {
     public static void main(String[] args) {
         System.out.println(countSumOfBWords("dkfktnhfjdjBskrofBseiriB"));
-        System.out.println(countSumOfTargetWords("dfjfhellohdbdbhellohellohchdhdhhellofhfhfhfh", "hello"));
+        System.out.println(countSumOfTargetWords("dfjfhellohdbdbhellohellohchdhdhhellofhfhfhfh"));
     }
 
     public static int countSumOfBWords(String text) {
@@ -14,11 +14,11 @@ public class StringSmallExercises {
         return counter;
     }
 
-    public static int countSumOfTargetWords(String text, String targetWord) {
+    public static int countSumOfTargetWords(String text) {
         int counter = 0;
-        while (text.contains(targetWord)) {
+        while (text.contains("hello")) {
             counter++;
-            text = text.substring(text.indexOf(targetWord) + targetWord.length());
+            text = text.substring(text.indexOf("hello") + "hello".length());
         }
         return counter;
     }

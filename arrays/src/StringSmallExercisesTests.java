@@ -10,6 +10,6 @@ public class StringSmallExercisesTests {
 
     @Test
     void returnSumOfTargetWords() {
-        assertEquals(3, StringSmallExercises.countSumOfTargetWords("hellohhheeellllooohellohello", "hello"));
+        assertEquals(3, StringSmallExercises.countSumOfTargetWords("hellohhheeellllooohellohello"));
     }
 }
