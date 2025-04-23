@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,8 +10,9 @@ public class StringSmallExercisesTests {
         assertEquals(6, StringSmallExercises.countSumOfBWords("BgkgkDUUKBBBitrirBrrkrB"));
     }
 
-    @Test
-    void returnSumOfTargetWords() {
-        assertEquals(3, StringSmallExercises.countSumOfTargetWords("hellohhheeellllooohellohello"));
+    @ParameterizedTest
+    @CsvSource({"dhrbbbggfhrelelo,0", "hellofjfjfjfjf,1", "hello,1", "hell,0", "djfhghtthello,1", "fhellovbvbhellodggdgdhellofhfhfhelloo,4"})
+    void returnSumOfTargetWords(String text, int result) {
+        assertEquals(result, StringSmallExercises.countSumOfTargetWords(text));
     }
 }
