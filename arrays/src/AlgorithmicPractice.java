@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class AlgorithmicPractice {
     public static void main(String[] args) {
         System.out.println(determineGreatestCommonDivisor(48, 18));
