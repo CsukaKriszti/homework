@@ -62,7 +62,7 @@ public class ExamPracticeSmallTasks {
             sumOfEvenNumbers += (number % 2 == 0) ? number : 0;
             sumOfOddNumbers += (number % 2 != 0) ? number : 0;
         }
-        return sumOfOddNumbers - sumOfEvenNumbers;
+        return sumOfEvenNumbers - sumOfOddNumbers;
     }
 
     public static int findMaxDifference(int[] numbers) {
