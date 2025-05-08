@@ -47,11 +47,11 @@ public class ExamPracticeSmallTasks {
         return numbers;
     }
 
-    public static int getSqrtOfMaxMinDifference() {
+    public static double getSqrtOfMaxMinDifference() {
         List<Integer> numbers = getSixNumbersFromUser();
         int max = Collections.max(numbers);
         int min = Collections.min(numbers);
-        return (int) Math.sqrt(max - min);
+        return  Math.sqrt(max - min);
     }
 
     public static int getSumDifferenceOfOddEven() {

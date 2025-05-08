@@ -41,9 +41,9 @@ public class ExamPracticeMediumTasks {
             } else if (i % 4 == 1) {
                 sum += numbers[i] * 2;
             } else if (i % 4 == 2) {
-                sum += numbers[i] * -1;
+                sum -= numbers[i];
             } else {
-                sum += numbers[i] * -2;
+                sum -= numbers[i] * 2;
             }
         }
         return sum;
