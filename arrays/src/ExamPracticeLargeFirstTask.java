@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class ExamPracticeLargeFirstTask {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.println(sumEverySecondElements(getFactorialNumbers(returnNumberFromConsole())));
+        //System.out.println(sumEverySecondElements(getFactorialNumbers(returnNumberFromConsole())));
         scanner.close();
-
+        System.out.println(getFactorialNumbers(21));
     }
 
     public static int returnNumberFromConsole() {
