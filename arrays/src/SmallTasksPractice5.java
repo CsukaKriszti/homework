@@ -64,11 +64,11 @@ public class SmallTasksPractice5 {
     }
 
     public static int findNextLargerPrimeNumber(int number) {
-        int largerPrimeNumber = number + 1;
-        while (!isPrimeNumber(largerPrimeNumber)) {
-            largerPrimeNumber++;
+        int nextPossiblePrime = number + 1;
+        while (!isPrimeNumber(nextPossiblePrime)) {
+            nextPossiblePrime++;
 
         }
-        return largerPrimeNumber;
+        return nextPossiblePrime;
     }
 }
