@@ -8,8 +8,11 @@ public class Hexagon extends Shape {
     }
 
     public Hexagon(double side) {
-        super();
         this.sideLength = side;
+    }
+
+    public void setSideLength(double sideLength) {
+        this.sideLength = sideLength;
     }
 
     @Override

@@ -15,6 +15,18 @@ public class Triangle extends Shape {
         this.c = c;
     }
 
+    public void setA(double a) {
+        this.a = a;
+    }
+
+    public void setB(double b) {
+        this.b = b;
+    }
+
+    public void setC(double c) {
+        this.c = c;
+    }
+
     @Override
     public double getPerimeter() {
         return a + b + c;

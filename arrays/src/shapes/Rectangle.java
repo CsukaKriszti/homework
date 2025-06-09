@@ -8,8 +8,15 @@ public class Rectangle extends Shape {
     }
 
     public Rectangle(double height, double width) {
-        super();
         this.height = height;
+        this.width = width;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public void setWidth(double width) {
         this.width = width;
     }
 
