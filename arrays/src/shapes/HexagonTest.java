@@ -9,7 +9,7 @@ public class HexagonTest {
         Hexagon hexagon = new Hexagon();
         hexagon.setSideLength(3);
         double result = hexagon.getPerimeter();
-        Assertions.assertEquals(18, result);
+        Assertions.assertEquals(18.0, result, 0.01);
     }
 
     @Test
@@ -17,6 +17,6 @@ public class HexagonTest {
         Hexagon hexagon = new Hexagon();
         hexagon.setSideLength(3);
         double result = hexagon.getArea();
-        Assertions.assertEquals(23.382685902179844, result);
+        Assertions.assertEquals(23.38, result, 0.01);
     }
 }

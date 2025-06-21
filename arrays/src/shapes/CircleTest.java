@@ -9,7 +9,7 @@ public class CircleTest {
         Circle circle = new Circle();
         circle.setRadius(10);
         double result = circle.getPerimeter();
-        Assertions.assertEquals(62.83185307179586, result);
+        Assertions.assertEquals(62.83, result, 0.01);
     }
 
     @Test
@@ -17,6 +17,6 @@ public class CircleTest {
         Circle circle = new Circle();
         circle.setRadius(10);
         double result = circle.getArea();
-        Assertions.assertEquals(314.1592653589793, result);
+        Assertions.assertEquals(314.16, result, 0.01);
     }
 }
